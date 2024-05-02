@@ -25,7 +25,7 @@ class MyWindow(EasyFrame):
         self.checkbutton = self.addCheckbutton(text="Tomato Sauce", row=12, column=3,command = Ingrediants.append("Tomato Sauce"))
         self.checkbutton = self.addCheckbutton(text="Eggs", row=13, column=3,command = Ingrediants.append("Eggs"))
         # Create a button
-        self.addButton(text="Get Recipes", row=14, column=0, command = (self.addLabel(text= Ingrediants, row=15, column=1)))
+        self.addButton(text="Get Recipes", row=14, column=0) 
 
 class RecipesPage(EasyFrame):
      def __init__(self):
