@@ -1,10 +1,11 @@
 from breezypythongui import EasyFrame
 from tkinter.font import Font
 import tkinter
+from tkinter import PhotoImage
 Ingrediants = []
 grilledCheese = ["Cheese","Butter","Bread"]
-cheeseburger = ["Cheese","Hamburger","Ketchup","Mustard","Bread","Pickles"]
-spaghettiAndMeatballs = ["Spaghetti Noodles","Tomato Sauce","Meatballs"]
+cheeseburger = ["Cheese","Hamburger","Bread",]
+spaghettiAndMeatballs = ["Spaghetti Noodles","Tomato Sauce","Hamburger"]
 class MyWindow(EasyFrame):
     def __init__(self):
         EasyFrame.__init__(self, title="Final Project SDEV140",width=1300,height=950 )
@@ -13,7 +14,7 @@ class MyWindow(EasyFrame):
         self.myFirstLabel["font"] = font
         self.myFirstLabel["foreground"] = "Purple"
         self.myFirstLabel["background"] = "White"    
-        # Create a checkbox
+    
         self.checkbutton = self.addCheckbutton(text="Cheese", row=1, column=3,command = self.add_cheese)
         self.checkbutton = self.addCheckbutton(text="Bread", row=2, column=3,command = self.add_bread)
         self.checkbutton = self.addCheckbutton(text="Butter", row=4, column=3,command = self.add_butter)
@@ -26,8 +27,6 @@ class MyWindow(EasyFrame):
         self.checkbutton = self.addCheckbutton(text="Spaghetti Noodles", row=11, column=3,command = self.add_SN)
         self.checkbutton = self.addCheckbutton(text="Tomato Sauce", row=12, column=3,command = self.add_TS)
         self.checkbutton = self.addCheckbutton(text="Eggs", row=13, column=3,command = self.add_eggs)
-        # Create a button
-
         self.addButton(text="Get Recipes", row=14, column=0, command = recipes_Page )
 
     def add_cheese(self):
@@ -54,6 +53,7 @@ class MyWindow(EasyFrame):
         Ingrediants.append("Tomato Sauce")
     def add_eggs(self):
         Ingrediants.append("Eggs")
+
 def GC_Recipe():
     class GCRecipe(EasyFrame):
         def __init__(self):
@@ -67,12 +67,44 @@ def GC_Recipe():
     if __name__ == "__main__":
         window = GCRecipe()
         window.mainloop()
+
+def CB_Recipe():
+    class CBRecipe(EasyFrame):
+        def __init__(self):
+            EasyFrame.__init__(self,title="Cheeseburger Instructions")
+            self.addLabel(text="Start by forming the raw Hamburger into a patty like shape.", row=1, column=0)
+            self.addLabel(text="Next, get a pan hot on medium/hot setting(varying, depends on your appliance)", row=2, column=0)
+            self.addLabel(text="Then fry the patty, flipping every 3 minutes or so until desired color and texture is acheived. ", row=3, column=0)
+            self.addLabel(text="NOTE: Raw meat can contain bacteria harmful to your health.", row=4, column=0)
+            self.addLabel(text=" Once the patty is cooked, turn off the heat, flip your patty so the hottest side is facing up, ", row=5, column=0)
+            self.addLabel(text=" And lay your cheese on top the patty and cover the pan for 5 minutes.", row=6, column=0)
+            self.addLabel(text="While the cheese melts, get your bread ready and gather all your toppings to make your cheeseburger! ", row=7, column=0)
+            self.addLabel(text=" ", row=8, column=0)
+            self.addLabel(text="Enjoy by itself or with your favorite sides!", row=9, column=0)
+    if __name__ == "__main__":
+        window = CBRecipe()
+        window.mainloop()
+
+def SM_Recipe():
+    class SMRecipe(EasyFrame):
+        def __init__(self):
+            EasyFrame.__init__(self,title="Spaghetti & Meatballs Instructions")
+            self.addLabel(text="Start by buttering one side of two pieces of bread", row=1, column=0)
+            self.addLabel(text="Next, With the butter side facing out, put a slice of cheese between your bread", row=2, column=0)
+            self.addLabel(text="Then fry it on a hot skillet flipping it about every 3 minutes or ", row=3, column=0)
+            self.addLabel(text="Until Desired color and texture is achieved.", row=4, column=0)
+            self.addLabel(text=" ", row=5, column=0)
+            self.addLabel(text="Enjoy by itself or with your favorite soup!", row=6, column=0)
+    if __name__ == "__main__":
+        window = SMRecipe()
+        window.mainloop()
+
 def recipes_Page():
     class RecipesPage(EasyFrame):
         def __init__(self):
-            EasyFrame.__init__(self, title="Recipes",width=1300,height=950 )
-            self.myFirstLabel = self.addLabel(text="Pantry App", row=0, column=0)
-            self.addLabel(text="Recipes", row=0, column=1)
+            EasyFrame.__init__(self, width=1300,height=950 )
+            self.myFirstLabel= self.addLabel(text="Recipes Available to Cook Now", row=0, column=0)
+        
             font = Font(family="Verdana", size=20, slant="italic")
             self.myFirstLabel["font"] = font
             self.myFirstLabel["foreground"] = "Black"
@@ -81,7 +113,20 @@ def recipes_Page():
             matching_GCrecipe = [s for s in Ingrediants if s in grilledCheese ]
 
             if len(matching_GCrecipe) == 3:
-                self.addButton(text = "Grilled Cheese" , row=1, column=2, command= GC_Recipe)
+                self.addButton(text = "Cook Now" , row=1, column=3, command= GC_Recipe)
+                self.addLabel(text="Grilled Cheese", row = 1, column= 2)
+            matching_CBrecipe = [s for s in Ingrediants if s in cheeseburger ]
+
+            if len(matching_CBrecipe) == 3:
+                self.addButton(text = "Cook Now" , row=2, column=3, command= CB_Recipe)
+                self.addLabel(text="CheeseBurger", row = 2, column= 2)
+            
+            matching_SMrecipe = [s for s in Ingrediants if s in cheeseburger ]
+
+            if len(matching_SMrecipe) == 3:
+                self.addButton(text = "Cook Now" , row=3, column=3, command= SM_Recipe)
+                self.addLabel(text="Spaghetti & Meatballs", row = 3, column= 2)
+
     if __name__ == "__main__":
         window = RecipesPage()
         window.mainloop()
