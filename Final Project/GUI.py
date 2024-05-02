@@ -1,8 +1,8 @@
 from breezypythongui import EasyFrame
 from tkinter.font import Font
 import tkinter
-from Ingrediants_list import Ingrediants 
 from Recipes_Page import RecipesPage
+Ingrediants = []
 class MyWindow(EasyFrame):
     def __init__(self):
         EasyFrame.__init__(self, title="Final Project SDEV140",width=1300,height=950 )
@@ -10,7 +10,7 @@ class MyWindow(EasyFrame):
         font = Font(family="Verdana", size=20, slant="italic")
         self.myFirstLabel["font"] = font
         self.myFirstLabel["foreground"] = "Purple"
-        self.myFirstLabel["background"] = "White"
+        self.myFirstLabel["background"] = "White"    
         # Create a checkbox
         self.checkbutton = self.addCheckbutton(text="Cheese", row=1, column=3,command = Ingrediants.append("Cheese"))
         self.checkbutton = self.addCheckbutton(text="Bread", row=2, column=3,command = Ingrediants.append("Bread"))
@@ -25,6 +25,7 @@ class MyWindow(EasyFrame):
         self.checkbutton = self.addCheckbutton(text="Tomato Sauce", row=12, column=3,command = Ingrediants.append("Tomato Sauce"))
         self.checkbutton = self.addCheckbutton(text="Eggs", row=13, column=3,command = Ingrediants.append("Eggs"))
         # Create a button
+
         self.addButton(text="Get Recipes", row=14, column=0, command = RecipesPage)
 
 if __name__ == "__main__":
