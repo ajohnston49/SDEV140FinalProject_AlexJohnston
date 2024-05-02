@@ -1,7 +1,7 @@
 from breezypythongui import EasyFrame
 from tkinter.font import Font
 import tkinter
-Ingrediants = []
+from Ingrediants_list import Ingrediants 
 from Recipes_Page import RecipesPage
 class MyWindow(EasyFrame):
     def __init__(self):
