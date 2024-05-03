@@ -89,12 +89,13 @@ def SM_Recipe():
     class SMRecipe(EasyFrame):
         def __init__(self):
             EasyFrame.__init__(self,title="Spaghetti & Meatballs Instructions")
-            self.addLabel(text="Start by buttering one side of two pieces of bread", row=1, column=0)
-            self.addLabel(text="Next, With the butter side facing out, put a slice of cheese between your bread", row=2, column=0)
-            self.addLabel(text="Then fry it on a hot skillet flipping it about every 3 minutes or ", row=3, column=0)
-            self.addLabel(text="Until Desired color and texture is achieved.", row=4, column=0)
+            self.addLabel(text="Start by getting a deep pan of water boiling, and then add your noodles.", row=1, column=0)
+            self.addLabel(text="Next, roll your hamburger into inch size balls, place them on a flat pan and bake them at 375 for 20 minutes.", row=2, column=0)
+            self.addLabel(text="Once the spaghetti is cooked to the desired softness, drain the water and add your suace and throw back on low heat.", row=3, column=0)
+            self.addLabel(text="Once the Meatballs are done, drain any grease and add them to your spahetti and cover for another 15 minutes.", row=4, column=0)
+            self.addLabel(text=" Your spaghetti is now ready to enjoy to enjoy!", row=5, column=0)
             self.addLabel(text=" ", row=5, column=0)
-            self.addLabel(text="Enjoy by itself or with your favorite soup!", row=6, column=0)
+            self.addLabel(text="Enjoy by itself or with your favorite bread!", row=6, column=0)
     if __name__ == "__main__":
         window = SMRecipe()
         window.mainloop()
