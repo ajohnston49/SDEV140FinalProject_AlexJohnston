@@ -6,7 +6,7 @@ import breezypythongui as bpg
 
 class RecipesWindow(bpg.EasyDialog):
     def __init__(self):
-        super().__init__(title="My Custom Dialog")
+        super().__init__(self.Mywindow, title="My Custom Dialog")
         
 if __name__ == "__main__":
     dialog = RecipesWindow()

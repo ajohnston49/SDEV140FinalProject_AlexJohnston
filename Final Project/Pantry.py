@@ -9,12 +9,13 @@ import tkinter
 Ingrediants = []
 
 # Predefined recipes
-# ANY NEW RECIPES WITH INGREDIANTS NOT LISTED MUST HAVE A CHECK BUTTON CREATED FOR USER INPUT
-# ALONG WITH A NEW 'COOKNOW' BUTTON ON THE SECOND WINDOW AND A CALL EVENT FOR THE STEPS ON A THIRD WINDOW
+
 grilledCheese = ["Cheese","Butter","Bread"]
 cheeseburger = ["Cheese","Hamburger","Bread",]
 spaghettiAndMeatballs = ["Spaghetti Noodles","Tomato Sauce","Hamburger"]
 
+# ANY NEW RECIPES WITH INGREDIANTS NOT LISTED MUST HAVE A CHECK BUTTON CREATED FOR USER INPUT
+# ALONG WITH A NEW 'COOKNOW' BUTTON ON THE SECOND WINDOW AND A CALL EVENT FOR THE STEPS ON A THIRD WINDOW
 
 class MyWindow(EasyFrame):
     def __init__(self, title="Pantry"):
@@ -99,6 +100,8 @@ def Recipes_on():
             self.addButton(text = "Cook Now" , row=1, column=3, command= GC_Recipe)
             self.addLabel(text="Grilled Cheese", row = 1, column= 2,background="Grey")
             self.addButton(text = "Cook Now" , row=2, column=3, command= CB_Recipe)
+            self.addLabel(text="CheeseBurger", row = 2, column= 2,background="Grey")
+            self.addButton(text = "Back" , row=0, column=4, command= MyWindow)
             self.addLabel(text="CheeseBurger", row = 2, column= 2,background="Grey")
     if __name__ == "__main__":
         window = RecipesON()
