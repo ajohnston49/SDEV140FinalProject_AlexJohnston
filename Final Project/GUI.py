@@ -1,7 +1,11 @@
-from breezypythongui import EasyFrame
+from breezypythongui import EasyFrame, EasyCanvas
 from tkinter.font import Font
 import tkinter
 from tkinter import PhotoImage
+import tkinter as tk
+
+
+       
 Ingrediants = []
 grilledCheese = ["Cheese","Butter","Bread"]
 cheeseburger = ["Cheese","Hamburger","Bread",]
@@ -10,6 +14,10 @@ class MyWindow(EasyFrame):
     def __init__(self):
         EasyFrame.__init__(self, title="Final Project SDEV140",width=1300,height=950 )
         self.myFirstLabel = self.addLabel(text="Pantry App", row=0, column=0)
+        self.canvas = EasyCanvas(self, width=200, height=200, background="white")
+        self.canvas.grid(row=0, column=0)
+        self.image = PhotoImage(file='RecipesPic')
+        self.canvas.drawImage(self.image, 100, 100)
         font = Font(family="Verdana", size=20, slant="italic")
         self.myFirstLabel["font"] = font
         self.myFirstLabel["foreground"] = "Purple"
@@ -28,6 +36,7 @@ class MyWindow(EasyFrame):
         self.checkbutton = self.addCheckbutton(text="Tomato Sauce", row=12, column=3,command = self.add_TS)
         self.checkbutton = self.addCheckbutton(text="Eggs", row=13, column=3,command = self.add_eggs)
         self.addButton(text="Get Recipes", row=14, column=0, command = recipes_Page )
+        self.addButton(text="Get Recipes window", row=14, column=1, command = Second_Window  )
 
     def add_cheese(self):
         Ingrediants.append("Cheese")
@@ -70,7 +79,7 @@ def GC_Recipe():
 
 def CB_Recipe():
     class CBRecipe(EasyFrame):
-        def __init__(self):
+        def __init__(self, resizeable = True):
             EasyFrame.__init__(self,title="Cheeseburger Instructions")
             self.addLabel(text="Start by forming the raw Hamburger into a patty like shape.", row=1, column=0)
             self.addLabel(text="Next, get a pan hot on medium/hot setting(varying, depends on your appliance)", row=2, column=0)
@@ -146,8 +155,26 @@ def GC_Recipe():
         window = GCRecipe()
         window.mainloop()
 
+def Second_Window():
+    class SecondWindow(EasyFrame):
+        def __init__(Alex):
+            EasyFrame.__init__(Alex, title="Recipes Page",width=1300,height=950 )
+            Alex.myFirstLabel = Alex.addLabel(text="Recipes", row=0, column=0)
+            font = Font(family="Verdana", size=20, slant="italic")
+            Alex.myFirstLabel["font"] = font
+            Alex.myFirstLabel["foreground"] = "Purple"
+            Alex.myFirstLabel["background"] = "White"
+    if __name__ == "__main__":
+        SecondWindow().mainloop()
+
+
+
+
+
 if __name__ == "__main__":
     window = MyWindow()
     window.mainloop()
+
+
 
 print(Ingrediants)
