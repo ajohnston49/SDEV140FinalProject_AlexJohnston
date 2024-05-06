@@ -12,12 +12,10 @@ cheeseburger = ["Cheese","Hamburger","Bread",]
 spaghettiAndMeatballs = ["Spaghetti Noodles","Tomato Sauce","Hamburger"]
 class MyWindow(EasyFrame):
     def __init__(self):
-        EasyFrame.__init__(self, title="Final Project SDEV140",width=1300,height=950 )
+        EasyFrame.__init__(self, title="Final Project SDEV140")
         self.myFirstLabel = self.addLabel(text="Pantry App", row=0, column=0)
-        self.canvas = EasyCanvas(self, width=200, height=200, background="white")
-        self.canvas.grid(row=0, column=0)
-        self.image = PhotoImage(file='RecipesPic')
-        self.canvas.drawImage(self.image, 100, 100)
+        
+       
         font = Font(family="Verdana", size=20, slant="italic")
         self.myFirstLabel["font"] = font
         self.myFirstLabel["foreground"] = "Purple"
