@@ -1,12 +1,12 @@
-from breezypythongui import EasyFrame
-from tkinter.font import Font
+from breezypythongui import EasyFrame,EasyCanvas
 import tkinter
-
-
+from tkinter.font import Font
+from tkinter import PhotoImage
 
 # Emtpy list for user choices
  
 Ingrediants = []
+
 
 # Predefined recipes
 
@@ -165,14 +165,14 @@ class MyWindow(EasyFrame):
     
     def Recipes_on(self):
         RecipesOn = self.addPanel(row=0, column=0,rowspan=18, columnspan=10, background="Grey")
-    
-        self.addButton(text = "Cook Now" , row=3, column=3, command= self.SM_Recipe)
+        self.addLabel(text="All Available Recipes", row = 0, column= 1,background="Grey",foreground="Purple")
+        self.addButton(text = "Cook Now" , row=3, column=3, command= self.SM_Recipe2)
         self.addLabel(text="Spaghetti & Meatballs", row = 3, column= 2,background="Grey")
-        self.addButton(text = "Cook Now" , row=1, column=3, command= self.GC_Recipe)
+        self.addButton(text = "Cook Now" , row=1, column=3, command= self.GC_Recipe2)
         self.addLabel(text="Grilled Cheese", row = 1, column= 2,background="Grey")
-        self.addButton(text = "Cook Now" , row=2, column=3, command= self.CB_Recipe)
+        self.addButton(text = "Cook Now" , row=2, column=3, command= self.CB_Recipe2)
         self.addLabel(text="CheeseBurger", row = 2, column= 2,background="Grey")
-        self.addButton(text = "Back" , row=0, column=4, command=(MyWindow,self.destroy()) )
+        self.addButton(text = "Back" , row=0, column=4, command=self.execute_multiple_commands)
         self.addLabel(text="CheeseBurger", row = 2, column= 2,background="Grey")
         
     
@@ -180,7 +180,7 @@ class MyWindow(EasyFrame):
 # Steps for making a grilled cheese
 
     def GC_Recipe(self):
-        self.addPanel(row=0, column=0,rowspan=18, columnspan=10, background="Grey")
+        GCRecipe = self.addPanel(row=0, column=0,rowspan=18, columnspan=10, background="Grey")
         self.addLabel(text="Start by buttering one side of two pieces of bread", row=1, column=0,background="Grey")
         self.addLabel(text="Next, With the butter side facing out, put a slice of cheese between your bread", row=2, column=0,background="Grey")
         self.addLabel(text="Then fry it on a hot skillet flipping it about every 3 minutes or ", row=3, column=0,background="Grey")
@@ -188,6 +188,19 @@ class MyWindow(EasyFrame):
         self.addLabel(text=" ", row=5, column=0,background="Grey")
         self.addLabel(text="Enjoy by itself or with your favorite soup!", row=6, column=0,background="Grey")
         self.addButton(text= "Go Back To Choices", row = 0,column = 3, command = self.recipes_Page )
+        self.addButton(text = "Main Menu" , row=0, column=4, command=self.execute_multiple_commands)
+
+    def GC_Recipe2(self):
+        GCRecipe = self.addPanel(row=0, column=0,rowspan=18, columnspan=10, background="Grey")
+        self.addLabel(text="Start by buttering one side of two pieces of bread", row=1, column=0,background="Grey")
+        self.addLabel(text="Next, With the butter side facing out, put a slice of cheese between your bread", row=2, column=0,background="Grey")
+        self.addLabel(text="Then fry it on a hot skillet flipping it about every 3 minutes or ", row=3, column=0,background="Grey")
+        self.addLabel(text="Until Desired color and texture is achieved.", row=4, column=0,background="Grey")
+        self.addLabel(text=" ", row=5, column=0,background="Grey")
+        self.addLabel(text="Enjoy by itself or with your favorite soup!", row=6, column=0,background="Grey")
+        self.addButton(text= "Go Back To Choices", row = 0,column = 3, command = self.Recipes_on )
+        self.addButton(text = "Main Menu" , row=0, column=4, command=self.execute_multiple_commands)
+        
 
 
 # Steps for making a cheeseburger
@@ -204,7 +217,22 @@ class MyWindow(EasyFrame):
         self.addLabel(text=" ", row=8, column=0,background="Grey")
         self.addLabel(text="Enjoy by itself or with your favorite sides!", row=9, column=0,background="Grey")
         self.addButton(text= "Go Back To Choices", row = 0,column = 3, command = self.recipes_Page)
-    
+        self.addButton(text = "Main Menu" , row=0, column=4, command=self.execute_multiple_commands)
+
+    def CB_Recipe2(self):
+        CBRecipe  = self.addPanel(row=0, column=0,rowspan=18, columnspan=10, background="Grey")
+        self.addLabel(text="Start by forming the raw Hamburger into a patty like shape.", row=1, column=0,background="Grey")
+        self.addLabel(text="Next, get a pan hot on medium/hot setting(varying, depends on your appliance)", row=2, column=0,background="Grey")
+        self.addLabel(text="Then fry the patty, flipping every 3 minutes or so until desired color and texture is acheived. ", row=3, column=0,background="Grey")
+        self.addLabel(text="NOTE: Raw meat can contain bacteria harmful to your health.", row=4, column=0,background="Grey")
+        self.addLabel(text=" Once the patty is cooked, turn off the heat, flip your patty so the hottest side is facing up, ", row=5, column=0,background="Grey")
+        self.addLabel(text=" And lay your cheese on top the patty and cover the pan for 5 minutes.", row=6, column=0,background="Grey")
+        self.addLabel(text="While the cheese melts, get your bread ready and gather all your toppings to make your cheeseburger! ", row=7, column=0,background="Grey")
+        self.addLabel(text=" ", row=8, column=0,background="Grey")
+        self.addLabel(text="Enjoy by itself or with your favorite sides!", row=9, column=0,background="Grey")
+        self.addButton(text= "Go Back To Choices", row = 0,column = 3, command = self.Recipes_on)
+        self.addButton(text = "Main Menu" , row=0, column=4, command=self.execute_multiple_commands)
+        
 #Steps for making Spaghetti and Meatballs 
 
     def SM_Recipe(self):
@@ -217,7 +245,19 @@ class MyWindow(EasyFrame):
         self.addLabel(text=" ", row=5, column=0,background="Grey")
         self.addLabel(text="Enjoy by itself or with your favorite bread!", row=6, column=0,background="Grey")
         self.addButton(text= "Go Back To Choices", row = 0,column = 3, command = self.recipes_Page )
-    
+        self.addButton(text = "Main Menu" , row=0, column=4, command=self.execute_multiple_commands)
+
+    def SM_Recipe2(self):
+        SMRecipe = self.addPanel(row=0, column=0,rowspan=18, columnspan=10, background="Grey")
+        self.addLabel(text="Start by getting a deep pan of water boiling, and then add your noodles.", row=1, column=0,background="Grey")
+        self.addLabel(text="Next, roll your hamburger into inch size balls, place them on a flat pan and bake them at 375 for 20 minutes.", row=2, column=0,background="Grey")
+        self.addLabel(text="Once the spaghetti is cooked to the desired softness, drain the water and add your suace and throw back on low heat.", row=3, column=0,background="Grey")
+        self.addLabel(text="Once the Meatballs are done, drain any grease and add them to your spahetti and cover for another 15 minutes.", row=4, column=0,background="Grey")
+        self.addLabel(text=" Your spaghetti is now ready to enjoy to enjoy!", row=5, column=0,background="Grey")
+        self.addLabel(text=" ", row=5, column=0,background="Grey")
+        self.addLabel(text="Enjoy by itself or with your favorite bread!", row=6, column=0,background="Grey")
+        self.addButton(text= "Go Back To Choices", row = 0,column = 3, command = self.Recipes_on )
+        self.addButton(text = "Main Menu" , row=0, column=4, command=self.execute_multiple_commands)
 
 #Creates a recipes page that is called when hitting the 'get recipes' button on the parent window
 
